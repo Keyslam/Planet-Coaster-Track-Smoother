@@ -1,4 +1,5 @@
-SetMouseDelay, 35
+#SingleInstance, force
+SetMouseDelay, 25
 
 ; Logs
 global Track  = []
@@ -14,6 +15,37 @@ global SmoothY = 906
 
 global StartX = 0
 global StartY = 0
+
+global passes = 1
+global smoothText
+
+Gui, Add, Button, x10 y10 w200, Trace
+
+Gui, Add, Button, y+5 w155 vSmooth,
+GuiControl, disable, Smooth
+
+
+Gui, Add, Button, x+5 gDecrementPass, -
+Gui, Add, Button, x+5 gIncrementPass, +
+Gui, +AlwaysOnTop
+Gui, Show, w500 h500, Hello
+return
+
+GuiClose:
+   ExitApp
+   return
+
+DecrementPass:
+   passes := passes - 1
+   passes := passes > 1 ? passes : 1
+   MsgBox, %passes%
+   return
+
+IncrementPass:
+   passes := passes + 1
+   Gui, Show, w500 h500, Hello
+   MsgBox, %passes%
+   return
 
 StartLogMouse() {
    if (Logging) {
@@ -37,7 +69,7 @@ Smooth() {
 }
 
 StartSmooth() {
-   loop 2 {
+   loop 4 {
       i := 1
       leng := Track.Length()
 
@@ -88,3 +120,4 @@ RunScript() {
 ^x:: RunScript()
 LControl & LButton:: StartLogMouse()
 LControl & LButton up:: EndLogMouse()
+^p:: ExitApp
