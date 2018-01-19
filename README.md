@@ -8,7 +8,7 @@ Usage:
 2. Run the script as administrator.
 3. Press "Register Smooth", then LCtrl + LClick on the smooth button.
 4. Press "Start Tracing".
-5. While holding LCtrl, click the marker and move it one tracko ver.
+5. While holding LCtrl, click the marker and move it one track over.
 6. Repeat this until you are at the end of the track, then do the process backwards to your starting point. All while holding LCtrl
 7. Press the "Smooth: x" button.
 
